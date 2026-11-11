@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cardápio Digital | Jolly Rogers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Urbanist:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <a href="#topo" class="logo"><img src="img/logo-completo.png" alt="Jolly Rogers"></a>
+  <a href="#nova-comanda" class="btn-pill">Abrir comanda +</a>
+  <a href="#menu" class="hamburguer" aria-label="Abrir menu"></a>
+  <a href="#topo" class="fechar" aria-label="Fechar menu">&times;</a>
+</header>
+
+<nav id="menu" aria-label="Navegação principal">
+  <ul>
+    <li><a href="#topo" aria-current="page">Cardápio</a></li>
+    <li><a href="#mesas">Mesas &amp; Comandas</a></li>
+    <li><a href="#pedidos">Pedidos (KDS)</a></li>
+    <li><a href="#historico">Histórico &amp; Relatório</a></li>
+  </ul>
+</nav>
+
+<input type="radio" name="cat" id="c-todos" checked hidden>
+<input type="radio" name="cat" id="c-entradas" hidden>
+<input type="radio" name="cat" id="c-pratos" hidden>
+<input type="radio" name="cat" id="c-lanches" hidden>
+<input type="radio" name="cat" id="c-bebidas" hidden>
+
+<main>
+  <header class="intro">
+    <hgroup>
+      <h1>Cardápio Digital</h1>
+      <p>Consulte produtos por categoria, pesquise pratos, cadastre novidades ou edite itens existentes.</p>
+    </hgroup>
+    <a href="#novo-item" class="btn-pill">Novo item do cardápio +</a>
+  </header>
+
+  <search class="filtros">
+    <form action="#">
+      <input type="search" name="q" placeholder="Pesquisa por pratos, ingredientes e bebidas..." aria-label="Pesquisar no cardápio">
+      <fieldset>
+        <legend hidden>Categorias</legend>
+        <label for="c-todos">Todos</label>
+        <label for="c-entradas">Entradas</label>
+        <label for="c-pratos">Pratos</label>
+        <label for="c-lanches">Lanches</label>
+        <label for="c-bebidas">Bebidas</label>
+      </fieldset>
+      <select name="ordem" aria-label="Ordenação">
+        <option>Ordenação de padrão</option>
+        <option>Menor preço</option>
+        <option>Maior preço</option>
+        <option>A–Z</option>
+      </select>
+    </form>
+  </search>
+
+  <section id="entradas">
+    <h2>Entradas</h2>
+    <ul>
+      <li><article>
+        <figure><img src="img/camarao-empanado.jpg" alt="Camarão empanado"></figure>
+        <h3>Camarão empanado</h3>
+        <p>Molhos: rosé, barbecue, mostarda e mel</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/mini-pasteis.jpg" alt="Mini pastéis"></figure>
+        <h3>Mini pastéis</h3>
+        <p>Charque, queijo, frango e calabresa</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/bruschetta.jpg" alt="Bruschetta tradicional"></figure>
+        <h3>Bruschetta tradicional</h3>
+        <p>Pão tostado, alho, tomates frescos, azeite de oliva e manjericão.</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/guacamole.jpg" alt="Guacamole com tortillas"></figure>
+        <h3>Guacamole c/ tortillas</h3>
+        <p>Abacate amassado temperado com limão, tomate, cebola, coentro e pimenta, com salgadinhos de milho.</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+    </ul>
+  </section>
+
+  <section id="pratos">
+    <h2>Pratos</h2>
+    <ul>
+      <li><article>
+        <figure><img src="img/frango-parmegiana.jpg" alt="Frango à parmegiana"></figure>
+        <h3>Frango à parmegiana</h3>
+        <p>Filé de frango empanado, espaguete, molho de tomate artesanal e queijo parmesão</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/carbonara.jpg" alt="Carbonara"></figure>
+        <h3>Carbonara</h3>
+        <p>Espaguete, guanciale, queijo pecorino romano, ovos</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/costela.jpg" alt="Costela à moda da casa"></figure>
+        <h3>Costela à moda da casa</h3>
+        <p>Costela no bafo, feijão, arroz, vinagrete e fritas</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/peixe-dore.jpg" alt="Peixe à dorê"></figure>
+        <h3>Peixe à dorê</h3>
+        <p>Filé de peixe temperado e empanado, arroz à grega e vinagrete</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+    </ul>
+  </section>
+
+  <section id="lanches">
+    <h2>Lanches</h2>
+    <ul>
+      <li><article>
+        <figure><img src="img/hamburguer-monstro.jpg" alt="Hambúrguer monstro"></figure>
+        <h3>Hambúrguer monstro</h3>
+        <p>6 blends de 160g de carne, que 12 fatias de queijo cheddar, 200g de bacon, cebola caramelizada, pão</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/batata-cheddar.jpg" alt="Batata com cheddar e bacon"></figure>
+        <h3>Batata c/ cheddar e bacon</h3>
+        <p>Batata frita com cheddar e bacon</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/beirute.jpg" alt="Beirute"></figure>
+        <h3>Beirute</h3>
+        <p>Pão sírio, queijo derretido, tomate e alface. Sabores: carne e frango</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/coxinha.jpg" alt="Coxinha"></figure>
+        <h3>Coxinha</h3>
+        <p>Coxinha crocante. Sabores: frango, charque e costela</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+    </ul>
+  </section>
+
+  <section id="bebidas">
+    <h2>Bebidas</h2>
+    <ul>
+      <li><article>
+        <figure><img src="img/refrigerante.jpg" alt="Refrigerante em lata"></figure>
+        <h3>Refrigerante em lata</h3>
+        <p>COCA-COLA, SPRITE, guaraná antartica, etc.</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/cerveja.jpg" alt="Cerveja"></figure>
+        <h3>Cerveja</h3>
+        <p>TEMOS BRAHMA, SKOL, HEINIKEIN, ITAIPAVA, ETC.</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/agua.jpg" alt="Água"></figure>
+        <h3>Água</h3>
+        <p>Água COM GAS OU SEM</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+      <li><article>
+        <figure><img src="img/suco.jpg" alt="Jarra de suco"></figure>
+        <h3>Jarra de suco 1L</h3>
+        <p>Suco natural da fruta. Sabores: laranja, limão e graviola</p>
+        <footer><strong>R$ 00,00</strong><a href="#nova-comanda" class="btn-mini">Comanda+</a><a href="#editar-item" class="btn-icone" aria-label="Editar"></a><a href="#excluir-item" class="btn-icone" aria-label="Excluir"></a></footer>
+      </article></li>
+    </ul>
+  </section>
+</main>
+
+<aside class="direitos">
+  <p><em><strong>Todos os direitos reservados ao Bando:</strong> Proibida a reprodução de conteúdos sem a autorização do capitão.</em></p>
+</aside>
+
+<footer class="rodape">
+  <section class="rodape-conteudo">
+    <figure class="marca">
+      <img src="img/logo-rodape.png" alt="Jolly Rogers: caveira com chapéu de cozinheiro e talheres">
+    </figure>
+
+    <nav aria-label="Links do rodapé">
+      <h2>Rogers</h2>
+      <ul>
+        <li><a href="#quem-somos">Quem Somos</a></li>
+        <li><a href="#contatos">Contatos</a></li>
+        <li><a href="#topo">Cardapio</a></li>
+      </ul>
+      <img src="img/redes.png" alt="Instagram, TikTok, Facebook, YouTube e LinkedIn" class="redes">
+    </nav>
+
+    <section class="contato">
+      <a href="https://wa.me/" aria-label="Chama no Whatsapp"><img src="img/whatsapp.png" alt="Chama no Whatsapp: promoções, lançamentos e benefícios"></a>
+      <ul>
+        <li><a href="#app-store"><img src="img/app-store.png" alt="Disponível na App Store"></a></li>
+        <li><a href="#google-play"><img src="img/google-play.webp" alt="Disponível no Google Play"></a></li>
+      </ul>
+    </section>
+  </section>
+
+  <p class="lema"><em><strong>Jolly Rogers:</strong> Navegando pelos mares dos sabores para trazer a você pratos dignos do Rei dos Piratas.</em></p>
+</footer>
+
+<!-- ============ MODAIS (sem JS, abertos via :target) ============ -->
+
+<dialog id="nova-comanda" aria-labelledby="t-comanda">
+  <form action="#" method="dialog">
+    <h2 id="t-comanda">Abrir nova comanda</h2>
+    <fieldset>
+      <p>
+        <label for="mesa">Mesa do Salão <abbr title="obrigatório">*</abbr></label>
+        <select id="mesa" name="mesa" required><option value=""></option><option value="1">Mesa 1</option><option value="2">Mesa 2</option><option value="3">Mesa 3</option><option value="4">Mesa 4</option><option value="5">Mesa 5</option><option value="6">Mesa 6</option><option value="7">Mesa 7</option><option value="8">Mesa 8</option></select>
+      </p>
+      <p>
+        <label for="cliente">Nome ou Identificação do Cliente <abbr title="obrigatório">*</abbr></label>
+        <input id="cliente" name="cliente" type="text" required>
+      </p>
+      <p class="check"><input id="taxa" name="taxa" type="checkbox" checked><label for="taxa">Habilitar taxa de serviço padrão (10%)</label></p>
+    </fieldset>
+    <menu>
+      <li><a href="#topo" class="btn-claro">Cancelar</a></li>
+      <li><button type="submit" class="btn-vermelho">ABRIR</button></li>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="novo-item" aria-labelledby="t-novo">
+  <form action="#" method="dialog">
+    <h2 id="t-novo">Novo item no cardápio</h2>
+    <fieldset class="grade">
+      <p class="largo"><label for="n-nome">Nome do Prato ou Bebida <abbr title="obrigatório">*</abbr></label><input id="n-nome" type="text" required></p>
+      <p><label for="n-cat">Categoria <abbr title="obrigatório">*</abbr></label><select id="n-cat" required><option value=""></option><option>Entradas</option><option>Pratos</option><option>Lanches</option><option>Bebidas</option></select></p>
+      <p><label for="n-preco">Preço (R$) <abbr title="obrigatório">*</abbr></label><input id="n-preco" type="number" step="0.01" min="0" required></p>
+      <p class="largo"><label for="n-desc">Descrição dos Ingredientes</label><textarea id="n-desc" rows="5"></textarea></p>
+      <p class="largo"><label for="n-foto">URL da Foto do Prato <abbr title="obrigatório">*</abbr></label><input id="n-foto" type="url" required></p>
+      <p class="check largo"><input id="n-disp" type="checkbox" checked><label for="n-disp">Item disponível para pedidos no restaurante</label></p>
+    </fieldset>
+    <menu>
+      <li><a href="#topo" class="btn-claro">Cancelar</a></li>
+      <li><button type="submit" class="btn-vermelho">Salvar</button></li>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="editar-item" aria-labelledby="t-editar">
+  <form action="#" method="dialog">
+    <h2 id="t-editar">Editar item do cardápio</h2>
+    <fieldset class="grade">
+      <p class="largo"><label for="e-nome">Nome do Prato ou Bebida <abbr title="obrigatório">*</abbr></label><input id="e-nome" type="text" required></p>
+      <p><label for="e-cat">Categoria <abbr title="obrigatório">*</abbr></label><select id="e-cat" required><option value=""></option><option>Entradas</option><option>Pratos</option><option>Lanches</option><option>Bebidas</option></select></p>
+      <p><label for="e-preco">Preço (R$) <abbr title="obrigatório">*</abbr></label><input id="e-preco" type="number" step="0.01" min="0" required></p>
+      <p class="largo"><label for="e-desc">Descrição dos Ingredientes</label><textarea id="e-desc" rows="5"></textarea></p>
+      <p class="largo"><label for="e-foto">URL da Foto do Prato <abbr title="obrigatório">*</abbr></label><input id="e-foto" type="url" required></p>
+      <p class="check largo"><input id="e-disp" type="checkbox" checked><label for="e-disp">Item disponível para pedidos no restaurante</label></p>
+    </fieldset>
+    <menu>
+      <li><a href="#topo" class="btn-claro">Cancelar</a></li>
+      <li><button type="submit" class="btn-vermelho">Salvar</button></li>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="excluir-item" aria-labelledby="t-excluir">
+  <form action="#" method="dialog">
+    <h2 id="t-excluir">Excluir item do cardápio?</h2>
+    <p>Tem certeza que deseja remover permanentemente o prato "NOME DO PRATO"? Esta ação não pode ser desfeita.</p>
+    <menu>
+      <li><a href="#topo" class="btn-claro">Cancelar</a></li>
+      <li><button type="submit" class="btn-vermelho">SIM</button></li>
+    </menu>
+  </form>
+</dialog>
+
+<script src="js/script.js"></script>
+</body>
+</html>
