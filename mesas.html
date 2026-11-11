@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mesas &amp; Comandas | Jolly Rogers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Urbanist:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mesas.css">
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <a href="index.html" class="logo"><img src="img/logo-completo.png" alt="Jolly Rogers"></a>
+  <a href="#nova-comanda" class="btn-pill">Abrir comanda +</a>
+  <a href="#menu" class="hamburguer" aria-label="Abrir menu"></a>
+  <a href="#topo" class="fechar" aria-label="Fechar menu">&times;</a>
+</header>
+
+<nav id="menu" aria-label="Navegação principal">
+  <ul>
+    <li><a href="index.html">Cardápio</a></li>
+    <li><a href="mesas.html" aria-current="page">Mesas &amp; Comandas</a></li>
+    <li><a href="#pedidos">Pedidos (KDS)</a></li>
+    <li><a href="#historico">Histórico &amp; Relatório</a></li>
+  </ul>
+</nav>
+
+<main class="pagina-mesas">
+  <header class="intro">
+    <hgroup>
+      <h1>Gestão de Mesas &amp; Comandas</h1>
+      <p>Abra comandas informando mesa ou cliente, adicione produtos, altere quantidade e calcule o total em tempo real</p>
+    </hgroup>
+    <a href="#nova-comanda" class="btn-pill">Abrir comanda +</a>
+  </header>
+
+  <section class="salao" aria-label="Salão">
+    <section class="painel">
+      <h2>Mapa de Mesas</h2>
+      <ul class="mesas"><li><a href="#nova-comanda" class="mesa livre" data-mesa="1"><strong>1</strong><small>Livre</small></a></li><li><a href="#nova-comanda" class="mesa livre" data-mesa="2"><strong>2</strong><small>Livre</small></a></li><li><a href="#nova-comanda" class="mesa livre" data-mesa="3"><strong>3</strong><small>Livre</small></a></li><li><a href="#nova-comanda" class="mesa livre" data-mesa="4"><strong>4</strong><small>Livre</small></a></li><li><a href="#nova-comanda" class="mesa livre" data-mesa="5"><strong>5</strong><small>Livre</small></a></li><li><a href="#nova-comanda" class="mesa livre" data-mesa="6"><strong>6</strong><small>Livre</small></a></li><li><a href="#nova-comanda" class="mesa livre" data-mesa="7"><strong>7</strong><small>Livre</small></a></li><li><a href="#nova-comanda" class="mesa livre" data-mesa="8"><strong>8</strong><small>Livre</small></a></li></ul>
+      <h2>Comandas em Aberto</h2>
+      <div id="lista-comandas"><div class="vazio" role="status"><h3>Nenhuma comanda aberta</h3><p>Clique em "Abrir Comanda" ou selecione uma mesa livre.</p></div></div>
+    </section>
+
+    <section class="painel sem-comanda" aria-label="Comanda selecionada">
+      <div class="vazio" role="status"><h3>Nenhuma comanda aberta</h3><p>Clique em "Abrir Comanda" ou selecione uma mesa livre.</p></div>
+    </section>
+
+    <section class="painel" id="comanda" aria-labelledby="t-cmd">
+      <header class="comanda-topo">
+        <h2 id="t-cmd"><span id="c-id"></span> <mark id="c-mesa"></mark></h2>
+        <menu>
+          <li><a href="#adicionar-produto" class="btn-acao laranja">+ Adicionar produto</a></li>
+          <li><a href="#pagamento" class="btn-acao verde">Fechar comanda</a></li>
+        </menu>
+      </header>
+      <p class="info">Cliente: <strong id="c-cliente"></strong> Aberta às: <strong><time id="c-hora"></time></strong> Status: <strong class="aberta">Aberta</strong></p>
+
+      <div class="comanda-vazia" id="c-vazio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="2.5"/><path d="M4 3v6a2 2 0 0 0 2 2v10M7 3v6M20 3c-2 1-3 4-3 7h3v11"/></svg>
+        <h3>Comanda vazia</h3>
+        <p>Nenhum produto foi adicionado a esta comanda ainda.</p>
+        <a href="#adicionar-produto" class="btn-acao fantasma">Adiciona primeiro item</a>
+      </div>
+
+      <table class="itens" id="c-itens" hidden>
+        <caption class="oculto">Itens da comanda</caption>
+        <thead><tr><th scope="col">Item / Descrição</th><th scope="col">Qtd</th><th scope="col">Unitário</th><th scope="col">Subtotal</th><th scope="col">Status de produção</th><th scope="col">Ações</th></tr></thead>
+        <tbody id="c-corpo"></tbody>
+      </table>
+
+      <section class="fechamento" aria-label="Resumo da conta">
+        <dl class="resumo">
+          <dt>Subtotal dos produtos:</dt><dd id="c-sub">R$ 0,00</dd>
+          <dt>Taxa de serviço (10%): <label><input type="checkbox" id="c-taxa"> Aplicar</label></dt><dd id="c-taxa-v">R$ 0,00</dd>
+          <dt class="total">Valor total:</dt><dd class="total" id="c-total">R$ 0,00</dd>
+        </dl>
+        <menu class="acoes">
+          <li><a href="#comanda" class="btn-acao contorno">Pedidos na cozinha</a></li>
+          <li><a href="#cancelar-comanda" class="btn-acao vermelho">Cancelar comanda</a></li>
+          <li class="direita"><a href="#pagamento" class="btn-acao verde">Encerrar e pagar (<span id="c-total-btn">R$ 0,00</span>)</a></li>
+        </menu>
+      </section>
+    </section>
+  </section>
+</main>
+
+
+
+<aside class="direitos">
+  <p><em><strong>Todos os direitos reservados ao Bando:</strong> Proibida a reprodução de conteúdos sem a autorização do capitão.</em></p>
+</aside>
+
+<footer class="rodape">
+  <section class="rodape-conteudo">
+    <figure class="marca">
+      <img src="img/logo-rodape.png" alt="Jolly Rogers: caveira com chapéu de cozinheiro e talheres">
+    </figure>
+
+    <nav aria-label="Links do rodapé">
+      <h2>Rogers</h2>
+      <ul>
+        <li><a href="#quem-somos">Quem Somos</a></li>
+        <li><a href="#contatos">Contatos</a></li>
+        <li><a href="#topo">Cardapio</a></li>
+      </ul>
+      <img src="img/redes.png" alt="Instagram, TikTok, Facebook, YouTube e LinkedIn" class="redes">
+    </nav>
+
+    <section class="contato">
+      <a href="https://wa.me/" aria-label="Chama no Whatsapp"><img src="img/whatsapp.png" alt="Chama no Whatsapp: promoções, lançamentos e benefícios"></a>
+      <ul>
+        <li><a href="#app-store"><img src="img/app-store.png" alt="Disponível na App Store"></a></li>
+        <li><a href="#google-play"><img src="img/google-play.webp" alt="Disponível no Google Play"></a></li>
+      </ul>
+    </section>
+  </section>
+
+  <p class="lema"><em><strong>Jolly Rogers:</strong> Navegando pelos mares dos sabores para trazer a você pratos dignos do Rei dos Piratas.</em></p>
+</footer>
+
+<!-- ============ MODAIS (sem JS, abertos via :target) ============ -->
+
+<dialog id="nova-comanda" aria-labelledby="t-comanda">
+  <form action="#" method="dialog" id="form-comanda">
+    <h2 id="t-comanda">Abrir nova comanda</h2>
+    <fieldset>
+      <p>
+        <label for="mesa">Mesa do Salão <abbr title="obrigatório">*</abbr></label>
+        <select id="mesa" name="mesa" required><option value=""></option><option value="1">Mesa 1</option><option value="2">Mesa 2</option><option value="3">Mesa 3</option><option value="4">Mesa 4</option><option value="5">Mesa 5</option><option value="6">Mesa 6</option><option value="7">Mesa 7</option><option value="8">Mesa 8</option></select>
+      </p>
+      <p>
+        <label for="cliente">Nome ou Identificação do Cliente <abbr title="obrigatório">*</abbr></label>
+        <input id="cliente" name="cliente" type="text" required>
+      </p>
+      <p class="check"><input id="taxa" name="taxa" type="checkbox" checked><label for="taxa">Habilitar taxa de serviço padrão (10%)</label></p>
+    </fieldset>
+    <menu>
+      <li><a href="#topo" class="btn-claro">Cancelar</a></li>
+      <li><button type="submit" class="btn-vermelho">ABRIR</button></li>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="adicionar-produto" aria-labelledby="t-add">
+  <form action="#" method="dialog" id="form-produto">
+    <h2 id="t-add">Adicionar produto à comanda</h2>
+    <fieldset>
+      <p class="largo"><label for="a-item">Selecione o Item do Cardápio <abbr title="obrigatório">*</abbr></label><select id="a-item" required><option value=""></option><optgroup label="Entradas"><option value="Camarão empanado" data-preco="38.00">Camarão empanado</option><option value="Mini pastéis" data-preco="24.00">Mini pastéis</option><option value="Bruschetta tradicional" data-preco="28.50">Bruschetta tradicional</option><option value="Guacamole c/ tortillas" data-preco="29.00">Guacamole c/ tortillas</option></optgroup><optgroup label="Pratos"><option value="Frango à parmegiana" data-preco="54.00">Frango à parmegiana</option><option value="Carbonara" data-preco="49.00">Carbonara</option><option value="Costela à moda da casa" data-preco="69.00">Costela à moda da casa</option><option value="Peixe à dorê" data-preco="58.00">Peixe à dorê</option></optgroup><optgroup label="Lanches"><option value="Hambúrguer monstro" data-preco="42.00">Hambúrguer monstro</option><option value="Batata c/ cheddar e bacon" data-preco="34.00">Batata c/ cheddar e bacon</option><option value="Beirute" data-preco="36.00">Beirute</option><option value="Coxinha" data-preco="9.00">Coxinha</option></optgroup><optgroup label="Bebidas"><option value="Refrigerante em lata" data-preco="7.00">Refrigerante em lata</option><option value="Cerveja" data-preco="12.00">Cerveja</option><option value="Água" data-preco="5.00">Água</option><option value="Jarra de suco 1L" data-preco="18.00">Jarra de suco 1L</option></optgroup></select></p>
+      <p class="largo"><label for="a-qtd">Quantidade <abbr title="obrigatório">*</abbr></label><input id="a-qtd" type="number" min="1" value="1" required></p>
+      <p class="largo"><label for="a-obs">Observações para a Cozinha / Bar (opcional)</label><textarea id="a-obs" rows="5" placeholder="Ex.: sem cebola, ao ponto, suco de graviola e etc..."></textarea></p>
+    </fieldset>
+    <menu>
+      <li><a href="#comanda" class="btn-claro">Cancelar</a></li>
+      <li><button type="submit" class="btn-vermelho">Adicionar</button></li>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="cancelar-comanda" aria-labelledby="t-canc">
+  <form action="#" method="dialog" id="form-cancelar">
+    <h2 id="t-canc">Cancelar comanda?</h2>
+    <p>Tem certeza que deseja cancelar e descartar a comanda (<span id="cancelar-id"></span>)? Esta ação liberará a mesa.</p>
+    <menu>
+      <li><a href="#comanda" class="btn-claro">Cancelar</a></li>
+      <li><button type="submit" class="btn-vermelho">SIM</button></li>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="excluir-item" aria-labelledby="t-exc">
+  <form action="#" method="dialog" id="form-excluir">
+    <h2 id="t-exc">Excluir item da comanda?</h2>
+    <p>Tem certeza que deseja remover permanentemente o prato "<span id="excluir-nome"></span>"? O pedido correspondente na cozinha também será cancelado.</p>
+    <menu>
+      <li><a href="#comanda" class="btn-claro">Cancelar</a></li>
+      <li><button type="submit" class="btn-vermelho">SIM</button></li>
+    </menu>
+  </form>
+</dialog>
+
+
+<dialog id="pagamento" aria-labelledby="t-pag">
+  <form action="#" method="dialog">
+    <h2 id="t-pag">Fechamento e pagamento da conta</h2>
+    <section class="fechamento">
+      <dl class="resumo">
+        <dt>Subtotal dos produtos:</dt><dd id="p-sub"></dd>
+        <dt>Taxa de serviço (10%): <label><input type="checkbox" id="p-taxa"> Aplicar</label></dt><dd id="p-taxa-v"></dd>
+        <dt class="total">Valor total:</dt><dd class="total" id="p-total"></dd>
+      </dl>
+    </section>
+    <fieldset class="campos-2">
+      <p><label for="p-forma">Forma de Pagamento <abbr title="obrigatório">*</abbr></label><select id="p-forma" required><option value=""></option><option>Dinheiro</option><option>Cartão de Crédito</option><option>Cartão de Débito</option><option>Pix</option></select></p>
+      <p><label for="p-desc">Desconto Especial (R$)</label><input id="p-desc" type="number" min="0" step="0.01"></p>
+    </fieldset>
+    <menu>
+      <li><a href="#comanda" class="btn-claro">Cancelar</a></li>
+      <li><a href="#comprovante" class="btn-claro btn-verde">Confirmar pagamento e comprovante</a></li>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="comprovante" aria-labelledby="t-comp">
+  <h2 id="t-comp">Comprovante de pagamento</h2>
+  <section class="recibo">
+    <h3>Jolly Rogers</h3>
+    <p>Av. Gastronomia, 1000 - Centro</p>
+    <p>CNPJ: 12.345.678/0001-90</p>
+    <p class="titulo-recibo">Extrato de conta / comprovante</p>
+    <hr>
+    <p class="dados"><strong>Comanda:</strong> <span id="r-cmd"></span> | <strong>Mesa:</strong> <span id="r-mesa"></span><br><strong>Cliente:</strong> <span id="r-cliente"></span><br><strong>Data/Hora:</strong> <span id="r-data"></span></p>
+    <table>
+      <thead><tr><th scope="col">Item</th><th scope="col">Qtd</th><th scope="col">Total</th></tr></thead>
+      <tbody id="r-itens"></tbody>
+    </table>
+    <hr>
+    <dl>
+      <dt>Subtotal:</dt><dd id="r-sub"></dd>
+      <dt>Taxa de Serviço:</dt><dd id="r-taxa"></dd>
+      <dt id="r-desc-t" hidden>Desconto:</dt><dd id="r-desc" hidden></dd>
+      <dt class="total">TOTAL PAGO:</dt><dd class="total" id="r-total"></dd>
+      <dt>Forma de Pagamento:</dt><dd id="r-forma"></dd>
+    </dl>
+    <hr>
+    <p>Obrigado pela preferência!<br>Volte sempre ao Jolly Rogers.</p>
+  </section>
+  <menu>
+    <li><a href="#topo" class="btn-claro">Fechar</a></li>
+  </menu>
+</dialog>
+
+<script src="js/script.js"></script>
+<script src="js/mesas.js"></script>
+</body>
+</html>
