@@ -1,0 +1,69 @@
+.kds-main {
+  padding: 2rem clamp(1rem, 5vw, 4rem);
+}
+
+.kds-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.kds-coluna {
+  background: var(--vermelho-card, #ff5c5c);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.kds-coluna header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  border-top: 6px solid #777; 
+}
+
+.kds-coluna h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: none;
+  margin: 0;
+}
+
+.col-recebidos header { border-top-color: #94a3b8; }  
+.col-preparo header  { border-top-color: var(--laranja, #f59e0b); } 
+.col-prontos header  { border-top-color: #22c55e; }  
+.col-entregues header{ border-top-color: #06b6d4; } 
+
+.kds-coluna .badge {
+  background: var(--creme, #fffbeb);
+  color: #000;
+  font-weight: 800;
+  font-size: 0.9rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.kds-conteudo {
+  padding: 2rem 1rem;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kds-conteudo p {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
