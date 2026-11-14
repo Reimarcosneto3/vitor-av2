@@ -52,7 +52,8 @@
 }
 
 .kds-conteudo {
-  padding: 2rem 1rem;
+  padding: 6rem 1.5rem; 
+  min-height: 280px; 
   text-align: center;
   flex: 1;
   display: flex;
