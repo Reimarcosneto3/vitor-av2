@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cardápio Digital | Jolly Rogers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Urbanist:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/historico.css">
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <a href="#topo" class="logo"><img src="img/logo-completo.png" alt="Jolly Rogers"></a>
+  <a href="#nova-comanda" class="btn-pill">Abrir comanda +</a>
+  <a href="#menu" class="hamburguer" aria-label="Abrir menu"></a>
+  <a href="#topo" class="fechar" aria-label="Fechar menu">&times;</a>
+</header>
+
+<nav id="menu" aria-label="Navegação principal">
+  <ul>
+    <li><a href="#topo" aria-current="page">Cardápio</a></li>
+    <li><a href="mesas.html">Mesas &amp; Comandas</a></li>
+    <li><a href="pedidos.html">Pedidos (KDS)</a></li>
+    <li><a href="historico.html">Histórico &amp; Relatório</a></li>
+  </ul>
+</nav>
+
+<main class="historico-main">
+  <header class="intro">
+    <hgroup>
+      <h1>Histórico &amp; Indicadores</h1>
+      <p>Consulte o histórico de comandas fechadas e reimprima comprovantes operacionais.</p>
+    </hgroup>
+  </header>
+
+  <!-- Cards de Indicadores -->
+  <section class="indicadores-grid">
+    <article class="card-indicador">
+      <h3>Faturamento total acumulado</h3>
+    </article>
+    <article class="card-indicador">
+      <h3>Comanda finalizadas</h3>
+    </article>
+    <article class="card-indicador">
+      <h3>Ticket médio por mesa</h3>
+    </article>
+    <article class="card-indicador">
+      <h3>Itens / Pratos servidos</h3>
+    </article>
+  </section>
+
+  <!-- Barra de Filtros -->
+  <search class="filtros-historico">
+    <form action="#">
+      <input type="search" placeholder="Pesquisa por clientes, comanda ou mesa..." aria-label="Pesquisar">
+      <select aria-label="Forma de pagamento">
+        <option>Todas as formas de pagamento</option>
+        <option>Pix</option>
+        <option>Cartão</option>
+      </select>
+      <select aria-label="Ordenação">
+        <option>Mais recentes primeiro</option>
+        <option>Mais antigos primeiro</option>
+      </select>
+    </form>
+  </search>
+
+  <!-- Tabela de Histórico (Com as colunas Cliente e Valor Total, mas sem os dados preenchidos) -->
+  <section class="tabela-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Comanda</th>
+          <th>Mesa</th>
+          <th>Cliente</th>
+          <th>Encerramento</th>
+          <th>Pagamento</th>
+          <th>Valor Total</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<aside class="direitos">
+  <p><em><strong>Todos os direitos reservados ao Bando:</strong> Proibida a reprodução de conteúdos sem a autorização do capitão.</em></p>
+</aside>
+
+<footer class="rodape">
+  <section class="rodape-conteudo">
+    <figure class="marca">
+      <img src="img/logo-rodape.png" alt="Jolly Rogers: caveira com chapéu de cozinheiro e talheres">
+    </figure>
+
+    <nav aria-label="Links do rodapé">
+      <h2>Rogers</h2>
+      <ul>
+        <li><a href="#quem-somos">Quem Somos</a></li>
+        <li><a href="#contatos">Contatos</a></li>
+        <li><a href="#topo">Cardapio</a></li>
+      </ul>
+      <img src="img/redes.png" alt="Instagram, TikTok, Facebook, YouTube e LinkedIn" class="redes">
+    </nav>
+
+    <section class="contato">
+      <a href="https://wa.me/" aria-label="Chama no Whatsapp"><img src="img/whatsapp.png" alt="Chama no Whatsapp: promoções, lançamentos e benefícios"></a>
+      <ul>
+        <li><a href="#app-store"><img src="img/app-store.png" alt="Disponível na App Store"></a></li>
+        <li><a href="#google-play"><img src="img/google-play.webp" alt="Disponível no Google Play"></a></li>
+      </ul>
+    </section>
+  </section>
+
+  <p class="lema"><em><strong>Jolly Rogers:</strong> Navegando pelos mares dos sabores para trazer a você pratos dignos do Rei dos Piratas.</em></p>
+</footer>
