@@ -100,6 +100,11 @@ body:has(#menu:target) .fechar { display: grid; }
   padding: 2rem clamp(1rem, 5vw, 4rem);
 }
 
+/* Título da página */
+.intro { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.intro p { margin-top: .4rem; }
+h1 { font-family: var(--titulo); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; text-transform: uppercase; line-height: 1; }
+
 /* Grid de Cards Superiores */
 .indicadores-grid {
   display: grid;

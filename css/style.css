@@ -172,9 +172,13 @@ article footer {
 article footer strong { font-size: 1.1rem; font-weight: 800; margin-right: auto; width: 4.5rem; line-height: 1.1; }
 article footer strong { word-spacing: 100vw; }
 .btn-mini {
-  background: var(--laranja); color: #5a3b12; font-size: .65rem; font-weight: 800; text-transform: uppercase;
-  text-decoration: none; padding: .5rem .8rem; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  height: 2.6rem; padding: 0 1.1rem;
+  background: var(--laranja); color: #5a3b12; font-size: .75rem; font-weight: 800; text-transform: uppercase;
+  text-decoration: none; border-radius: 999px;
+  transition: background-color .2s, transform .2s;
 }
+.btn-mini:hover { transform: scale(1.05); }
 .btn-icone {
   width: 2.6rem; height: 2.6rem; flex: none; border-radius: 50%; font-size: 0; text-decoration: none;
   background-color: var(--laranja); background-repeat: no-repeat; background-position: center; background-size: 62%;
