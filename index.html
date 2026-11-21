@@ -44,7 +44,7 @@
 
   <search class="filtros">
     <form action="#">
-      <input type="search" name="q" placeholder="Pesquisa por pratos, ingredientes e bebidas..." aria-label="Pesquisar no cardápio">
+      <input type="search" name="search" placeholder="Pesquisa por pratos, ingredientes e bebidas..." aria-label="Pesquisar no cardápio">
       <fieldset>
         <legend hidden>Categorias</legend>
         <label for="c-todos">Todos</label>
@@ -54,10 +54,10 @@
         <label for="c-bebidas">Bebidas</label>
       </fieldset>
       <select name="ordem" aria-label="Ordenação">
-        <option>Ordenação de padrão</option>
-        <option>Menor preço</option>
-        <option>Maior preço</option>
-        <option>A–Z</option>
+        <option value="padrao">Ordenação de padrão</option>
+        <option value="menorPreco">Menor preço</option>
+        <option value="maiorPreco">Maior preço</option>
+        <option value="a-z">A–Z</option>
       </select>
     </form>
   </search>
