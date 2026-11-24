@@ -328,4 +328,23 @@ dialog { max-height: 92dvh; }
 
 @media (min-width: 601px) and (max-width: 900px) {
   main > section > ul { grid-template-columns: repeat(2, 1fr); }
+
+
+/* isso é provisorio, é pra fazer os popup na tela ficarem destacados ( sompreando o resto da pagina */
+}
+dialog:target { /* modal que está aberto agora */
+  position: fixed; /* fixa o modal na tela */
+  z-index: 1000; /* deixa o modal acima da camada escura (que fica em 999) */
+}
+
+body:has(dialog:target)::after { /* quando há modal aberto, cria a camada escura no body (fora do modal) */
+  content: ""; /* obrigatório para o pseudo-elemento existir */
+  position: fixed; /* cobre a tela inteira, mesmo com rolagem */
+  inset: 0; /* gruda nos 4 cantos da tela */
+  background: rgba(0, 0, 0, 0.6); /* preto com 60% de opacidade = o sombreado */
+  z-index: 999; /* fica na frente da página, mas atrás do modal (1000) */
+}
+
+body:has(dialog:target) { /* quando existe algum modal aberto... */
+  overflow: hidden; /* ...trava a rolagem da página de trás */
 }
