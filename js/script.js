@@ -234,3 +234,63 @@
 
   render();
 })();
+
+//Ordenação
+
+const selectOrdem = document.querySelector('select[name="ordem"]');
+const listas = document.querySelectorAll('main section > ul');
+
+listas.forEach(ul => {
+  [...ul.children].forEach((li, index) => (li.setAttribute('data-ordem', index)));
+})
+
+const getPreco = li => {
+  const texto = li.querySelector('footer strong').textContent;
+  return parseFloat(texto.replace('R$', '').replace(',', '.'));
+}
+
+const getNome = li => li.querySelector('h3').textContent.trim();
+
+const ordenacao = {
+  padrao: (a, b) => a.getAttribute('data-ordem') - b.getAttribute('data-ordem'),
+  menorPreco: (a, b) => getPreco(a) - getPreco(b),
+  maiorPreco: (a, b) => getPreco(b) - getPreco(a),
+  'a-z': (a, b) => getNome(a).localeCompare(getNome(b), 'pt-BR'),
+};
+
+selectOrdem.addEventListener('change', () => {
+  const comparer = ordenacao[selectOrdem.value];
+
+  listas.forEach(ul => {
+    const itens = [...ul.children].sort(comparer);
+    itens.forEach(li => ul.appendChild(li));
+  });
+});
+
+//Barra de Pesquisa
+
+const searchInput = document.querySelector('input[name="search"]');
+const listasProdutos = document.querySelectorAll('main section > ul > li');
+const todosProdutos = [...listasProdutos];
+const secoes = document.querySelectorAll('main section[id]');
+
+const displayProdutos = encontrados => {
+  todosProdutos.forEach(li => {
+    li.hidden = !encontrados.includes(li);
+
+    secoes.forEach(secao => {
+      const temProdutoVisivel = [...secao.querySelectorAll('li')].some(li => !li.hidden);
+      secao.hidden = !temProdutoVisivel;
+    })
+  });
+};
+
+searchInput.addEventListener('keyup', (e) => {
+  const texto = e.target.value.toLocaleLowerCase();
+
+  const search = todosProdutos.filter(li => 
+    li.querySelector('h3').textContent.toLowerCase().includes(texto));
+  displayProdutos(search);
+})
+
+window.addEventListener('load', displayProdutos.bind(null, todosProdutos));
