@@ -2,6 +2,8 @@
 (() => {
   'use strict';
 
+  if (!document.querySelector('#form-comanda')) return;
+
   const KEY = 'jolly-rogers-mesas';
   const TAXA = 0.10;
   const $ = (s) => document.querySelector(s);
@@ -22,7 +24,7 @@
 
   const atual = () => state.comandas.find((c) => c.id === state.atual) || null;
   const totais = (c, desconto = 0) => {
-    const sub = arred(c.itens.reduce((t, i) => t + i.preco * i.qtd, 0));
+    const sub = arred(c.itens.reduce((t, i) => t + i.preco * i.qtd, 0)); /* já olhei aqui */
     const taxa = c.taxa ? arred(sub * TAXA) : 0;
     const desc = Math.min(Math.max(desconto, 0), sub + taxa);
     return { sub, taxa, desc, total: arred(sub + taxa - desc) };
@@ -202,6 +204,9 @@
   function confirmarPagamento() {
     const c = atual();
     const forma = $('#p-forma');
+
+    forma.setCustomValidity('');
+
     if (!c || !c.itens.length) {
       forma.setCustomValidity('Adicione pelo menos um item antes de fechar a conta.');
       forma.reportValidity();
@@ -226,6 +231,24 @@
     $('#r-forma').textContent = forma.value;
 
     // encerra a comanda e libera a mesa
+    
+
+     try {
+      const pedidos = JSON.parse(localStorage.getItem('jolly-rogers-pedidos')) || [];
+      pedidos.push({
+        id: uid(),
+        comanda: c.id,
+        mesa: c.mesa,
+        cliente: c.cliente,
+        itens: c.itens.map((i) => ({ nome: i.nome, qtd: i.qtd, obs: i.obs })),
+        forma: forma.value,
+        total: t.total,
+        hora: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+        status: 'recebido',
+      });
+      localStorage.setItem('jolly-rogers-pedidos', JSON.stringify(pedidos));
+    } catch (e) {}
+
     state.comandas = state.comandas.filter((x) => x.id !== c.id);
     state.atual = state.comandas.length ? state.comandas[0].id : null;
     salvar(); render();
@@ -258,8 +281,9 @@ const ordenacao = {
   'a-z': (a, b) => getNome(a).localeCompare(getNome(b), 'pt-BR'),
 };
 
-selectOrdem.addEventListener('change', () => {
+selectOrdem?.addEventListener('change', () => {
   const comparer = ordenacao[selectOrdem.value];
+  
 
   listas.forEach(ul => {
     const itens = [...ul.children].sort(comparer);
@@ -285,7 +309,7 @@ const displayProdutos = encontrados => {
   });
 };
 
-searchInput.addEventListener('keyup', (e) => {
+searchInput?.addEventListener('keyup', (e) => {
   const texto = e.target.value.toLocaleLowerCase();
 
   const search = todosProdutos.filter(li => 
@@ -294,3 +318,47 @@ searchInput.addEventListener('keyup', (e) => {
 })
 
 window.addEventListener('load', displayProdutos.bind(null, todosProdutos));
+
+
+// Faltou o cloude dá o nome para essa funcao, para eu explicar a vitor na entrega
+function renderizarPedidosKDS() {
+  const coluna = document.querySelector('.col-recebidos');
+  if (!coluna) return;
+
+  const KEY = 'jolly-rogers-pedidos';
+  const brl = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace(/\u00a0/g, ' ');
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  let pedidos = [];
+  try {
+    pedidos = JSON.parse(localStorage.getItem(KEY)) || [];
+  } catch (e) {}
+
+  const conteudo = coluna.querySelector('.kds-conteudo');
+  const badge = coluna.querySelector('.badge');
+
+  const recebidos = pedidos.filter((p) => p.status === 'recebido');
+
+  if (recebidos.length) {
+    conteudo.innerHTML = recebidos.map((p) => `
+      <article class="pedido">
+        <header>
+          <h3>${esc(p.comanda)}</h3>
+          <mark>Mesa ${esc(p.mesa)}</mark>
+        </header>
+        <p class="pedido-info">${esc(p.cliente)} · <time>${esc(p.hora)}</time></p>
+        <ul>
+          ${p.itens.map((i) => `<li><strong>${i.qtd}x</strong> ${esc(i.nome)}${i.obs ? `<small>${esc(i.obs)}</small>` : ''}</li>`).join('')}
+        </ul>
+        <footer>
+          <span>${esc(p.forma)}</span>
+          <strong>${brl(p.total)}</strong>
+        </footer>
+      </article>`).join('');
+  }
+
+  badge.textContent = recebidos.length;
+  badge.value = recebidos.length;
+};
+
+renderizarPedidosKDS();
