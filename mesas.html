@@ -148,9 +148,43 @@
   <form action="#" method="dialog" id="form-produto">
     <h2 id="t-add">Adicionar produto à comanda</h2>
     <fieldset>
-      <p class="largo"><label for="a-item">Selecione o Item do Cardápio <abbr title="obrigatório">*</abbr></label><select id="a-item" required><option value=""></option><optgroup label="Entradas"><option value="Camarão empanado" data-preco="38.00">Camarão empanado</option><option value="Mini pastéis" data-preco="24.00">Mini pastéis</option><option value="Bruschetta tradicional" data-preco="28.50">Bruschetta tradicional</option><option value="Guacamole c/ tortillas" data-preco="29.00">Guacamole c/ tortillas</option></optgroup><optgroup label="Pratos"><option value="Frango à parmegiana" data-preco="54.00">Frango à parmegiana</option><option value="Carbonara" data-preco="49.00">Carbonara</option><option value="Costela à moda da casa" data-preco="69.00">Costela à moda da casa</option><option value="Peixe à dorê" data-preco="58.00">Peixe à dorê</option></optgroup><optgroup label="Lanches"><option value="Hambúrguer monstro" data-preco="42.00">Hambúrguer monstro</option><option value="Batata c/ cheddar e bacon" data-preco="34.00">Batata c/ cheddar e bacon</option><option value="Beirute" data-preco="36.00">Beirute</option><option value="Coxinha" data-preco="9.00">Coxinha</option></optgroup><optgroup label="Bebidas"><option value="Refrigerante em lata" data-preco="7.00">Refrigerante em lata</option><option value="Cerveja" data-preco="12.00">Cerveja</option><option value="Água" data-preco="5.00">Água</option><option value="Jarra de suco 1L" data-preco="18.00">Jarra de suco 1L</option></optgroup></select></p>
-      <p class="largo"><label for="a-qtd">Quantidade <abbr title="obrigatório">*</abbr></label><input id="a-qtd" type="number" min="1" value="1" required></p>
-      <p class="largo"><label for="a-obs">Observações para a Cozinha / Bar (opcional)</label><textarea id="a-obs" rows="5" placeholder="Ex.: sem cebola, ao ponto, suco de graviola e etc..."></textarea></p>
+      <p class="largo"><label for="a-item">Selecione o Item do Cardápio <abbr title="obrigatório">*</abbr></label>
+        <select id="a-item" required>
+          <option value=""></option>
+          <optgroup label="Entradas">
+            <option value="Camarão empanado" data-preco="35.00">Camarão empanado</option>
+            <option value="Mini pastéis" data-preco="14.00">Mini pastéis</option>
+            <option value="Bruschetta tradicional" data-preco="20.00">Bruschetta tradicional</option>
+            <option value="Guacamole c/ tortillas" data-preco="18.00">Guacamole c/ tortillas</option>
+          </optgroup>
+          <optgroup label="Pratos">
+            <option value="Frango à parmegiana" data-preco="30.00">Frango à parmegiana</option>
+            <option value="Carbonara" data-preco="28.00">Carbonara</option>
+            <option value="Costela à moda da casa" data-preco="69.00">Costela à moda da casa</option>
+            <option value="Peixe à dorê" data-preco="26.00">Peixe à dorê</option>
+          </optgroup>
+          <optgroup label="Lanches">
+            <option value="Hambúrguer monstro" data-preco="50.00">Hambúrguer monstro</option>
+            <option value="Batata c/ cheddar e bacon" data-preco="20.00">Batata c/ cheddar e bacon</option>
+            <option value="Beirute" data-preco="22.00">Beirute</option>
+            <option value="Coxinha" data-preco="8.00">Coxinha</option>
+          </optgroup>
+          <optgroup label="Bebidas">
+            <option value="Refrigerante em lata" data-preco="10.00">Refrigerante em lata</option>
+            <option value="Cerveja" data-preco="14.00">Cerveja</option>
+            <option value="Água" data-preco="5.00">Água</option>
+            <option value="Jarra de suco 1L" data-preco="12.00">Jarra de suco 1L</option>
+          </optgroup>
+        </select>
+      </p>
+      <p class="largo">
+        <label for="a-qtd">Quantidade <abbr title="obrigatório">*</abbr></label>
+        <input id="a-qtd" type="number" min="1" value="1" required>
+      </p>
+      <p class="largo">
+        <label for="a-obs">Observações para a Cozinha / Bar (opcional)</label>
+        <textarea id="a-obs" rows="5" placeholder="Ex.: sem cebola, ao ponto, suco de graviola e etc..."></textarea>
+      </p>
     </fieldset>
     <menu>
       <li><a href="#comanda" class="btn-claro">Cancelar</a></li>
@@ -193,7 +227,16 @@
       </dl>
     </section>
     <fieldset class="campos-2">
-      <p><label for="p-forma">Forma de Pagamento <abbr title="obrigatório">*</abbr></label><select id="p-forma" required><option value=""></option><option>Dinheiro</option><option>Cartão de Crédito</option><option>Cartão de Débito</option><option>Pix</option></select></p>
+      <p>
+        <label for="p-forma">Forma de Pagamento <abbr title="obrigatório">*</abbr></label>
+      <select id="p-forma" required>
+        <option value=""></option>
+        <option>Dinheiro</option>
+        <option>Cartão de Crédito</option>
+        <option>Cartão de Débito</option>
+        <option>Pix</option>
+      </select>
+    </p>
       <p><label for="p-desc">Desconto Especial (R$)</label><input id="p-desc" type="number" min="0" step="0.01"></p>
     </fieldset>
     <menu>
