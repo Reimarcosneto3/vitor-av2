@@ -66,11 +66,13 @@
         <a href="#adicionar-produto" class="btn-acao fantasma">Adiciona primeiro item</a>
       </div>
 
-      <table class="itens" id="c-itens" hidden>
-        <caption class="oculto">Itens da comanda</caption>
-        <thead><tr><th scope="col">Item / Descrição</th><th scope="col">Qtd</th><th scope="col">Unitário</th><th scope="col">Subtotal</th><th scope="col">Status de produção</th><th scope="col">Ações</th></tr></thead>
-        <tbody id="c-corpo"></tbody>
-      </table>
+      <section class="lista-itens" aria-label="Itens da comanda">
+        <table class="itens" id="c-itens" hidden>
+          <caption class="oculto">Itens da comanda</caption>
+          <thead><tr><th scope="col">Item / Descrição</th><th scope="col">Qtd</th><th scope="col">Unitário</th><th scope="col">Subtotal</th><th scope="col">Status de produção</th><th scope="col">Ações</th></tr></thead>
+          <tbody id="c-corpo"></tbody>
+        </table>
+      </section>
 
       <section class="fechamento" aria-label="Resumo da conta">
         <dl class="resumo">
@@ -276,6 +278,5 @@
 </dialog>
 
 <script src="js/script.js"></script>
-<script src="js/mesas.js"></script>
 </body>
 </html>

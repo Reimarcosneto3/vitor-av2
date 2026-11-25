@@ -210,3 +210,19 @@ dialog .campos-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 700px) {
   .itens { display: block; overflow-x: auto; }
 }
+
+/* Listas com rolagem: o painel não estica mais para baixo */
+#lista-comandas {
+  max-height: 17rem; overflow-y: auto; padding-right: .4rem;
+  scrollbar-width: thin; scrollbar-color: var(--vinho) transparent;
+}
+.lista-itens {
+  max-height: 18rem; overflow: auto; margin-bottom: 1.5rem;
+  scrollbar-width: thin; scrollbar-color: var(--vinho) transparent;
+}
+.lista-itens:has(.itens[hidden]) { display: none; }
+.lista-itens .itens { margin-bottom: 0; }
+.lista-itens .itens thead th { position: sticky; top: 0; z-index: 1; background: var(--laranja); }
+@media (max-width: 700px) {
+  .lista-itens .itens { display: table; min-width: 42rem; }
+}
